@@ -49,7 +49,6 @@ const PropertyPage = () => {
           {state.description}
         </Typography>
       </Box>
-      {/* Add more property details here */}
     </div>
   )
 }
