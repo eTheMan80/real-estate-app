@@ -3,16 +3,18 @@ import Input from "@mui/material/Input"
 import InputAdornment from "@mui/material/InputAdornment"
 import FormControl from "@mui/material/FormControl"
 import { Search } from "@mui/icons-material/"
+import { useDebounce } from "../../hooks/useDebounce"
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState("")
+  const debouncedSearch = useDebounce(query, 500)
 
   const handleSearch = (ev: ChangeEvent<HTMLInputElement>) => {
     setQuery(ev.target.value)
   }
   const searchProducts = (ev: KeyboardEvent<HTMLInputElement>) => {
     if (ev.key === "Enter") {
-      onSearch(query)
+      onSearch(debouncedSearch)
     }
   }
 

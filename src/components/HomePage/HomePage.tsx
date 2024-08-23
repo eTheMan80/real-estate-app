@@ -1,4 +1,4 @@
-import React, { useReducer } from "react"
+import React, { useReducer, useState } from "react"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import PropertyList from "../PropertyList"
@@ -7,9 +7,12 @@ import { initialState, reducer } from "../../store/reducer"
 import "../../App.css"
 
 const App: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false)
   const [{ properties }, dispatch] = useReducer(reducer, initialState)
 
-  const handleSearch = (query: string) => {
+  const handleSearch = async (query: string) => {
+    setLoading(true)
+    await new Promise((resolve) => setTimeout(resolve, 800))
     if (query.trim() === "") {
       dispatch({
         type: "LoadProperties",
@@ -20,6 +23,7 @@ const App: React.FC = () => {
         payload: query,
       })
     }
+    setLoading(false)
   }
 
   return (
@@ -30,7 +34,8 @@ const App: React.FC = () => {
         </Typography>
       </Box>
       <SearchBar onSearch={handleSearch} />
-      <PropertyList properties={properties} />
+      {loading && <div>Loading...</div>}
+      {!loading && <PropertyList properties={properties} />}
     </div>
   )
 }
