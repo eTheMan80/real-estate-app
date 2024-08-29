@@ -1,7 +1,7 @@
 import React from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import HomePage from "./components/HomePage"
-import PropertyPage from "./components/PropertyPage"
+import HomePage from "./pages/HomePage"
+import PropertyPage from "./pages/PropertyPage"
 
 const router = createBrowserRouter([
   {

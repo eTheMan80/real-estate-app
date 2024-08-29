@@ -1,4 +1,4 @@
-import data from "../api/data.json"
+import data from "../api/data/data.json"
 
 type InitialState = {
   properties: PropertyProps[]

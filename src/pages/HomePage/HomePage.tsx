@@ -1,9 +1,9 @@
 import React, { useReducer, useState } from "react"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import PropertyList from "../PropertyList"
-import SearchBar from "../SearchBar"
-import { initialState, reducer } from "../../store/reducer"
+import PropertyList from "../../components/PropertyList"
+import SearchBar from "../../components/SearchBar"
+import { initialState, reducer } from "../../services/store/reducer"
 import "../../App.css"
 
 const App: React.FC = () => {
